@@ -212,12 +212,231 @@ These data structures take object references as keys. Set and WeakSet represent 
 
 
 
+# String
+
+  Strings are useful for holding data that can be represented in text form. Some of the most-used operations on strings are to check their length, to build and concatenate them using the + and += string operators, checking for the existence or location of substrings with the indexOf() method, or extracting substrings with the substring() method.
+  
+  
+      const string1 = "A string primitive";
+      const string2 = 'Also a string primitive';
+      const string3 = `Yet another string primitive`;
+
+
+
+Character access
+
+There are two ways to access an individual character in a string. The first is the charAt() method:
+
+      'cat'.charAt(1) // gives value "a"
+      
+      
+Comparing strings
+
+In C, the strcmp() function is used for comparing strings. In JavaScript, you just use the less-than and greater-than operators:
+
+      const a = 'a';
+      const b = 'b';
+      if (a < b) { // true
+        console.log(`${a} is less than ${b}`)
+      } else if (a > b) {
+        console.log(`${a} is greater than ${b}`)
+      } else {
+        console.log(`${a} and ${b} are equal.`)
+      }
+
+
+locale-aware manner.
+
+String primitives and String objects
+
+Note that JavaScript distinguishes between String objects and primitive string values. (The same is true of Boolean and Numbers.)
+
+        const strPrim = "foo"; // A literal is a string primitive
+        const strPrim2 = String(1); // Coerced into the string primitive "1"
+        const strPrim3 = String(true); // Coerced into the string primitive "true"
+        const strObj = new String(strPrim); // String with new returns a string wrapper object.
+
+        console.log(typeof strPrim); // Logs "string"
+        console.log(typeof strPrim2); // Logs "string"
+        console.log(typeof strPrim3); // Logs "string"
+        console.log(typeof strObj);  // Logs "object"
 
 
 
 
+String coercion
+
+Many built-in operations that expect strings first coerce their arguments to strings (which is largely why String objects behave similarly to string primitives). The operation can be summarized as follows:
+
+•	Strings are returned as-is.
+•	undefined turns into "undefined".
+•	null turns into "null".
+•	true turns into "true"; false turns into "false".
+•	Numbers are converted with the same algorithm as toString(10).
+•	BigInts are converted with the same algorithm as toString(10).
+•	Symbols throw a TypeError.
+•	Objects are first converted to a primitive by calling its [@@toPrimitive]() (with "string" as hint), toString(), and valueOf() methods, in that order. The resulting primitive is then converted to a string.
 
 
+# Constructor
+•	String()
+
+Creates a new String object. It performs type conversion when called as a function, rather than as a constructor, which is usually more useful.
+Static methods
+
+•	String.fromCharCode()
+
+Returns a string created by using the specified sequence of Unicode values.
+
+•	String.fromCodePoint()
+
+Returns a string created by using the specified sequence of code points.
+•	String.raw()
+
+
+Returns a string created from a raw template string.
+
+# Instance properties
+
+•	String.prototype.length
+
+Reflects the length of the string. Read-only
+
+Instance methods
+
+•	String.prototype.at()
+
+Returns the character (exactly one UTF-16 code unit) at the specified index. Accepts negative integers, which count back from the last string character.
+
+•	String.prototype.charAt()
+
+Returns the character (exactly one UTF-16 code unit) at the specified index.
+
+•	String.prototype.charCodeAt()
+
+Returns a number that is the UTF-16 code unit value at the given index.
+
+•	String.prototype.codePointAt()
+
+Returns a nonnegative integer Number that is the code point value of the UTF-16 encoded code point starting at the specified pos.
+
+•	String.prototype.concat()
+
+Combines the text of two (or more) strings and returns a new string.
+•	String.prototype.includes()
+
+Determines whether the calling string contains searchString.
+
+•	String.prototype.endsWith()
+
+Determines whether a string ends with the characters of the string searchString.
+
+•	String.prototype.indexOf()
+
+Returns the index within the calling String object of the first occurrence of searchValue, or -1 if not found.
+
+•	String.prototype.lastIndexOf()
+
+Returns the index within the calling String object of the last occurrence of searchValue, or -1 if not found.
+
+•	String.prototype.localeCompare()
+
+Returns a number indicating whether the reference string compareString comes before, after, or is equivalent to the given string in sort order.
+
+•	String.prototype.match()
+
+Used to match regular expression regexp against a string.
+
+•	String.prototype.matchAll()
+
+Returns an iterator of all regexp's matches.
+
+•	String.prototype.normalize()
+
+Returns the Unicode Normalization Form of the calling string value.
+
+•	String.prototype.padEnd()
+
+Pads the current string from the end with a given string and returns a new string of the length targetLength.
+
+•	String.prototype.padStart()
+
+Pads the current string from the start with a given string and returns a new string of the length targetLength.
+
+•	String.prototype.repeat()
+
+Returns a string consisting of the elements of the object repeated count times.
+
+•	String.prototype.replace()
+
+Used to replace occurrences of searchFor using replaceWith. searchFor may be a string or Regular Expression, and replaceWith may be a string or function.
+
+•	String.prototype.replaceAll()
+
+Used to replace all occurrences of searchFor using replaceWith. searchFor may be a string or Regular Expression, and replaceWith may be a string or function.
+
+•	String.prototype.search()
+
+	Search for a match between a regular expression regexp and the calling string.
+
+•	String.prototype.slice()
+
+Extracts a section of a string and returns a new string.
+
+•	String.prototype.split()
+
+Returns an array of strings populated by splitting the calling string at occurrences of the substring sep.
+
+•	String.prototype.startsWith()
+
+Determines whether the calling string begins with the characters of string searchString.
+
+•	String.prototype.substring()
+
+Returns a new string containing characters of the calling string from (or between) the specified index (or indices).
+
+•	String.prototype.toLocaleLowerCase()
+
+The characters within a string are converted to lowercase while respecting the current locale.For most languages, this will return the same as toLowerCase().
+
+
+•	String.prototype.toLocaleUpperCase( [locale, ...locales])
+
+The characters within a string are converted to uppercase while respecting the current locale.For most languages, this will return the same as toUpperCase().
+
+•	String.prototype.toLowerCase()
+
+Returns the calling string value converted to lowercase.
+
+
+•	String.prototype.toString()
+
+Returns a string representing the specified object. Overrides the Object.prototype.toString() method.
+
+•	String.prototype.toUpperCase()
+
+Returns the calling string value converted to uppercase.
+
+•	String.prototype.trim()
+
+Trims whitespace from the beginning and end of the string.
+
+•	String.prototype.trimStart()
+
+Trims whitespace from the beginning of the string.
+
+•	String.prototype.trimEnd()
+
+Trims whitespace from the end of the string.
+
+•	String.prototype.valueOf()
+
+
+Returns the primitive value of the specified object. Overrides the Object.prototype.valueOf() method.
+
+•	String.prototype[@@iterator]()
+
+Returns a new iterator object that iterates over the code points of a String value, returning each code point as a String value.
 
 
 
