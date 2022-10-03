@@ -114,15 +114,15 @@ ECMAScript has two built-in numeric types: Number and BigInt — along with the 
 Values outside the range ±(2^-1074 to 2^1024) are automatically converted:
 
 
-  • Positive values greater than Number.MAX_VALUE are converted to +Infinity.
+    • Positive values greater than Number.MAX_VALUE are converted to +Infinity.
 
-  • Positive values smaller than Number.MIN_VALUE are converted to +0.
+    • Positive values smaller than Number.MIN_VALUE are converted to +0.
 
-  • Negative values smaller than -Number.MAX_VALUE are converted to -Infinity.
+    • Negative values smaller than -Number.MAX_VALUE are converted to -Infinity.
 
-  • Negative values greater than -Number.MIN_VALUE are converted to -0.
-  
-  
+    • Negative values greater than -Number.MIN_VALUE are converted to -0.
+
+
  • BigInt type
  
  
