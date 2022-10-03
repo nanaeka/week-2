@@ -268,177 +268,246 @@ String coercion
 
 Many built-in operations that expect strings first coerce their arguments to strings (which is largely why String objects behave similarly to string primitives). The operation can be summarized as follows:
 
-•	Strings are returned as-is.
-•	undefined turns into "undefined".
-•	null turns into "null".
-•	true turns into "true"; false turns into "false".
-•	Numbers are converted with the same algorithm as toString(10).
-•	BigInts are converted with the same algorithm as toString(10).
-•	Symbols throw a TypeError.
-•	Objects are first converted to a primitive by calling its [@@toPrimitive]() (with "string" as hint), toString(), and valueOf() methods, in that order. The resulting primitive is then converted to a string.
+• Strings are returned as-is.
+• undefined turns into "undefined".
+• null turns into "null".
+• true turns into "true"; false turns into "false".
+• Numbers are converted with the same algorithm as toString(10).
+• BigInts are converted with the same algorithm as toString(10).
+• Symbols throw a TypeError.
+• Objects are first converted to a primitive by calling its [@@toPrimitive]() (with "string" as hint), toString(), and valueOf() methods, in that order. The resulting primitive is then converted to a string.
 
 
-# Constructor
-•	String()
+# Examples
+String conversion
 
-Creates a new String object. It performs type conversion when called as a function, rather than as a constructor, which is usually more useful.
-Static methods
+It's possible to use String as a more reliable toString() alternative, as it works when used on null and undefined. For example
 
-•	String.fromCharCode()
+		const nullVar = null;
+		nullVar.toString();       // TypeError: nullVar is null
+		String(nullVar);          // "null"
 
-Returns a string created by using the specified sequence of Unicode values.
+		const undefinedVar = undefined;
+		undefinedVar.toString();  // TypeError: undefinedVar is undefined
+		String(undefinedVar);     // "undefined"
 
-•	String.fromCodePoint()
 
-Returns a string created by using the specified sequence of code points.
-•	String.raw()
 
+# Number
+Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25.
 
-Returns a string created from a raw template string.
+The Number constructor contains constants and methods for working with numbers. Values of other types can be converted to numbers using the Number() function.
 
-# Instance properties
+Numbers are most commonly expressed in literal forms like 0b101, 0o13, 0x0A. The lexical grammar contains a more detailed reference.
 
-•	String.prototype.length
 
-Reflects the length of the string. Read-only
+		123; // one-hundred twenty-three
+		123.0; // same
+		123 === 123.0; // true
 
-Instance methods
+# Examples
+Using the Number object to assign values to numeric variables
+The following example uses the Number object's properties to assign values to several numeric variables:
 
-•	String.prototype.at()
+		const biggestNum = Number.MAX_VALUE;
+		const smallestNum = Number.MIN_VALUE;
+		const infiniteNum = Number.POSITIVE_INFINITY;
+		const negInfiniteNum = Number.NEGATIVE_INFINITY;
+		const notANum = Number.NaN;
 
-Returns the character (exactly one UTF-16 code unit) at the specified index. Accepts negative integers, which count back from the last string character.
+# Integer range for Number
 
-•	String.prototype.charAt()
+		const biggestInt = Number.MAX_SAFE_INTEGER; //  (2**53 - 1) =>  9007199254740991
+		const smallestInt = Number.MIN_SAFE_INTEGER; // -(2**53 - 1) => -9007199254740991
 
-Returns the character (exactly one UTF-16 code unit) at the specified index.
 
-•	String.prototype.charCodeAt()
+# Using Number() to convert a Date object
 
-Returns a number that is the UTF-16 code unit value at the given index.
+		const d = new Date("December 17, 1995 03:24:00");
+		console.log(Number(d));
 
-•	String.prototype.codePointAt()
+# Convert numeric strings and null to numbers
+ 
+		Number("123"); // 123
+		Number("123") === 123; // true
+		Number("12.3"); // 12.3
+		Number("12.00"); // 12
+		Number("123e-1"); // 12.3
+		Number(""); // 0
+		Number(null); // 0
+		Number("0x11"); // 17
+		Number("0b11"); // 3
+		Number("0o11"); // 9
+		Number("foo"); // NaN
+		Number("100a"); // NaN
+		Number("-Infinity"); // -Infinity
+		
+		
 
-Returns a nonnegative integer Number that is the code point value of the UTF-16 encoded code point starting at the specified pos.
 
-•	String.prototype.concat()
+# Math
+Math is a built-in object that has properties and methods for mathematical constants and functions. It's not a function object.Math works with the Number type. It doesn't work with BigInt.
 
-Combines the text of two (or more) strings and returns a new string.
-•	String.prototype.includes()
+Unlike many other global objects, Math is not a constructor. All properties and methods of Math are static. You refer to the constant pi as Math.PI and you call the sine function as Math.sin(x), where x is the method's argument. Constants are defined with the full precision of real numbers in JavaScript.
 
-Determines whether the calling string contains searchString.
 
-•	String.prototype.endsWith()
+# Examples
+Converting between degrees and radians
+The trigonometric functions sin(), cos(), tan(), asin(), acos(), atan(), and atan2() expect (and return) angles in radians.
 
-Determines whether a string ends with the characters of the string searchString.
+Since humans tend to think in degrees, and some functions (such as CSS transforms) can accept degrees, it is a good idea to keep functions handy that convert between the two:
 
-•	String.prototype.indexOf()
 
-Returns the index within the calling String object of the first occurrence of searchValue, or -1 if not found.
+			function degToRad(degrees) {
+			  return degrees * (Math.PI / 180);
+			}
 
-•	String.prototype.lastIndexOf()
+			function radToDeg(rad) {
+			  return rad / (Math.PI / 180);
+			}
 
-Returns the index within the calling String object of the last occurrence of searchValue, or -1 if not found.
 
-•	String.prototype.localeCompare()
 
-Returns a number indicating whether the reference string compareString comes before, after, or is equivalent to the given string in sort order.
+#  Primitive and Non-Primitive
 
-•	String.prototype.match()
+Primitive vs Non-Primitive
 
-Used to match regular expression regexp against a string.
 
-•	String.prototype.matchAll()
+Before I go into what the two categories of data types are, I will list which data types belong in which category.
+Primitive
 
-Returns an iterator of all regexp's matches.
 
-•	String.prototype.normalize()
+• Numbers
 
-Returns the Unicode Normalization Form of the calling string value.
+• Strings
 
-•	String.prototype.padEnd()
+• Booleans
 
-Pads the current string from the end with a given string and returns a new string of the length targetLength.
+• undefined
 
-•	String.prototype.padStart()
+• null
 
-Pads the current string from the start with a given string and returns a new string of the length targetLength.
+Non-Primitive (referred to collectively as Objects)
 
-•	String.prototype.repeat()
+• Objects
 
-Returns a string consisting of the elements of the object repeated count times.
+• Arrays
 
-•	String.prototype.replace()
+• Functions
 
-Used to replace occurrences of searchFor using replaceWith. searchFor may be a string or Regular Expression, and replaceWith may be a string or function.
 
-•	String.prototype.replaceAll()
+ Primitives :
 
-Used to replace all occurrences of searchFor using replaceWith. searchFor may be a string or Regular Expression, and replaceWith may be a string or function.
+		let a = 5
+		let b = a
+		console.log(a) // 5
+		console.log(b) // 5
+		console.log(a === b) // true
+		a = 10
+		console.log(a) // 10
+		console.log(b) // 5
+		console.log(a === b) // false
+		
+		
+		
+		
+Non-Primitives (Objects):
 
-•	String.prototype.search()
+		let a = [10]
+		let b = a
+		console.log(a === b) // true
+		a.push(10)
+		console.log(a) // [10, 10]
+		console.log(a === b) // true
+		
+		
+		
+# DOM
+		
+		
+		DOM bukan bagian dari JavaScript, melainkan browser (Web API)”
 
-	Search for a match between a regular expression regexp and the calling string.
 
-•	String.prototype.slice()
+# Mengubah Konten Element		
+		
+-    Element.textContent
 
-Extracts a section of a string and returns a new string.
+Element.textContent dapat kita gunakan untuk mengubah teks di dalam sebuah element
 
-•	String.prototype.split()
+ -  Element.innerHTML
 
-Returns an array of strings populated by splitting the calling string at occurrences of the substring sep.
+Element.innerHTML dapat kita gunakan untukmengubah konten HTML di dalam sebuah element
+		
+		
+# Menangkap Interaksi User
 
-•	String.prototype.startsWith()
+-   Element.addEventListener(“event”)
 
-Determines whether the calling string begins with the characters of string searchString.
 
-•	String.prototype.substring()
 
-Returns a new string containing characters of the calling string from (or between) the specified index (or indices).
+-   Element.onevent
 
-•	String.prototype.toLocaleLowerCase()
+		
+		
+EventListener - Click
 
-The characters within a string are converted to lowercase while respecting the current locale.For most languages, this will return the same as toLowerCase().
 
+Misalkan kita mempunyai element <input id=”user-input” />  dan <button id=”alert-button”>show</button>. 
+Kita ingin menampilkan pop up box yang berisi teks di dalam input tadi.
 
-•	String.prototype.toLocaleUpperCase( [locale, ...locales])
 
-The characters within a string are converted to uppercase while respecting the current locale.For most languages, this will return the same as toUpperCase().
+		// cari dulu kedua element tersebut berdasarkan id-nya
 
-•	String.prototype.toLowerCase()
+		const input = document.getElementById(“user-input”)
+		const button = document.getElementById(“alert-button”)
 
-Returns the calling string value converted to lowercase.
+# EventListener - Blur
 
+“Blur”, lawan dari “focus”, adalah event di mana sebuah element kehilangan fokus dari user (misal user klk mouse di luar element tersebut atau user klik tab untuk berpindah element)
 
-•	String.prototype.toString()
+Misalkan kita ingin memvalidasi isi dari <input id=”username” /> agar panjangnya minimal 6 karakter..
 
-Returns a string representing the specified object. Overrides the Object.prototype.toString() method.
 
-•	String.prototype.toUpperCase()
+		// cari dulu element tersebut berdasarkan id-nya
 
-Returns the calling string value converted to uppercase.
+		const input = document.getElementById(“username”)
 
-•	String.prototype.trim()
+		// tambahkan event listener
+		input.addEventListener(“blur”, () => {
+			if(input.value.length < 6) alert(“Panjang username minimal 6”)
+		})
+		
+		
+		
+# EventListener - Form Submission		
+		
+	Misalkan kita mempunyai element beberapa input dalam sebuah form <input name=”email /> dan <input type=”password” name=”password” />. Bagaimana caranya  kita mendapatkan isi dari kedua input tersebut saat submit form?
 
-Trims whitespace from the beginning and end of the string.
+		
+Ada 2 cara:
 
-•	String.prototype.trimStart()
+•  Pasang event listener di kedua input dan tombol submit, lalu saat tombol diklik, baca value dari kedua input tersebut. 
+•  Pasang event listener di form, lalu gunakan FormData untuk mengambil data dari masing-masing input
+		
+		
+		const form = document.getElementById(“form”)
 
-Trims whitespace from the beginning of the string.
+		form.addEventListener(“submit”, function(event) {
+			// cegah page refresh
+			event.preventDefault()
 
-•	String.prototype.trimEnd()
+			const formData = new FormData(form)
+			const values = Object.fromEntries(formData) // { email: ... }
+		})
 
-Trims whitespace from the end of the string.
 
-•	String.prototype.valueOf()
 
+		
 
-Returns the primitive value of the specified object. Overrides the Object.prototype.valueOf() method.
 
-•	String.prototype[@@iterator]()
-
-Returns a new iterator object that iterates over the code points of a String value, returning each code point as a String value.
-
-
-
-
-
+		
+		
+		
+		
+		
+		
