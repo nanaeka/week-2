@@ -63,47 +63,48 @@ Arrow function adalah cara lain menuliskan function. Ini adalah fitur terbaru ya
 
 The set of types in the JavaScript language consists of primitive values and objects.
 
-    Primitive values (immutable datum represented directly at the lowest level of the language)
-    
-    Boolean type
-    
-    Null type
-    
-    Undefined type
-    
-    Number type
-    
-    BigInt type
-    
-    String type
-    
-    Symbol type
+•	Primitive values (immutable datum represented directly at the lowest level of the language)
+
+•	Boolean type
+
+•	Null type
+
+•	Undefined type
+
+•	Number type
+
+•	BigInt type
+
+•	String type
+
+•	Symbol type
+
     
 # Objects (collections of properties)
 
 
-Primitive values
+• Primitive values
 
 All types except objects define immutable values (that is, values which can't be changed). For example, Strings are immutable. We refer to values of these types as "primitive values".
 
 
-Boolean type
+• Boolean type
 
 Boolean represents a logical entity and can have two values: true and false. See Boolean and Boolean for more details.
 
-Null type
+• Null type
 
 The Null type has exactly one value: null. See null and Null for more details.
 
-Undefined type
+• Undefined type
 
 A variable that has not been assigned a value has the value undefined. See undefined and Undefined for more details.
 
-Numeric types
+• Numeric types
 
 ECMAScript has two built-in numeric types: Number and BigInt — along with the related value NaN.
 
-Number type
+• Number type
 
   The Number type is a double-precision 64-bit binary format IEEE 754 value. It is capable of storing positive floating-point numbers between 2^-1074 (Number.MIN_VALUE) and 2^1024 (Number.MAX_VALUE) as well as negative floating-point numbers between -(2^-1074) and -(2^1024), but it can only safely store integers in the range -(2^53 − 1) (Number.MIN_SAFE_INTEGER) to 2^53 − 1 (Number.MAX_SAFE_INTEGER).
 
@@ -112,13 +113,23 @@ Number type
 
 Values outside the range ±(2^-1074 to 2^1024) are automatically converted:
 
-  Positive values greater than Number.MAX_VALUE are converted to +Infinity.
 
-  Positive values smaller than Number.MIN_VALUE are converted to +0.
+  • Positive values greater than Number.MAX_VALUE are converted to +Infinity.
 
-  Negative values smaller than -Number.MAX_VALUE are converted to -Infinity.
+  • Positive values smaller than Number.MIN_VALUE are converted to +0.
 
-  Negative values greater than -Number.MIN_VALUE are converted to -0.
+  • Negative values smaller than -Number.MAX_VALUE are converted to -Infinity.
+
+  • Negative values greater than -Number.MIN_VALUE are converted to -0.
+  
+  
+ • BigInt type
+ 
+ 
+  The BigInt type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. With BigInts, you can safely store and operate on large integers even beyond the safe integer limit for Numbers.A BigInt is created by appending n to the end of an integer or by calling the constructor.
+
+
+  You can obtain the largest safe value that can be incremented with Numbers by using the constant Number.MAX_SAFE_INTEGER. With the introduction of BigInts, you can operate with numbers beyond the Number.MAX_SAFE_INTEGER
 
 
 
