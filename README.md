@@ -3,15 +3,15 @@
 # Javascript – Scope
   Scope adalah konsep dalam flow data variabel.Menentukan suatu variabel bisa diakses pada scope tertentu atau tidak.
 
-# Blocks
+- Blocks
   
   Blocks adalah code yang berada didalam curly braces {}.Conditional, function, dan  looping menggunakan blocks.
 
-# Global Scope
+- Global Scope
    
    berarti variabel yang kita buat dapat diakses dimanapun dalam suatu file.Agar menjadi Global Scope, suatu variabel harus dideklarasikan diluar Blocks.
 
-# Local Scope
+- Local Scope
    
    berarti kita mendeklarasikan variabel didalam blocks seperti function, conditional, dan looping.Maka variabel hanya bisa diakses didalam blocks saja. Tidak bisa diakses diluar blocks
 
@@ -54,18 +54,71 @@ Arrow function adalah cara lain menuliskan function. Ini adalah fitur terbaru ya
 # Short Syntax Function
 
 
+# data types
+  Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
+
+
+# javascript types
+
+
+The set of types in the JavaScript language consists of primitive values and objects.
+
+    Primitive values (immutable datum represented directly at the lowest level of the language)
+    
+    Boolean type
+    
+    Null type
+    
+    Undefined type
+    
+    Number type
+    
+    BigInt type
+    
+    String type
+    
+    Symbol type
+    
+# Objects (collections of properties)
+
+
+Primitive values
+
+All types except objects define immutable values (that is, values which can't be changed). For example, Strings are immutable. We refer to values of these types as "primitive values".
+
+
+Boolean type
+
+Boolean represents a logical entity and can have two values: true and false. See Boolean and Boolean for more details.
+
+Null type
+
+The Null type has exactly one value: null. See null and Null for more details.
+
+Undefined type
+
+A variable that has not been assigned a value has the value undefined. See undefined and Undefined for more details.
+
+Numeric types
+
+ECMAScript has two built-in numeric types: Number and BigInt — along with the related value NaN.
+
+Number type
+
+  The Number type is a double-precision 64-bit binary format IEEE 754 value. It is capable of storing positive floating-point numbers between 2^-1074 (Number.MIN_VALUE) and 2^1024 (Number.MAX_VALUE) as well as negative floating-point numbers between -(2^-1074) and -(2^1024), but it can only safely store integers in the range -(2^53 − 1) (Number.MIN_SAFE_INTEGER) to 2^53 − 1 (Number.MAX_SAFE_INTEGER).
 
 
 
 
+Values outside the range ±(2^-1074 to 2^1024) are automatically converted:
 
+  Positive values greater than Number.MAX_VALUE are converted to +Infinity.
 
+  Positive values smaller than Number.MIN_VALUE are converted to +0.
 
+  Negative values smaller than -Number.MAX_VALUE are converted to -Infinity.
 
-
-
-
-
+  Negative values greater than -Number.MIN_VALUE are converted to -0.
 
 
 
